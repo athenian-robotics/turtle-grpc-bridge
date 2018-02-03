@@ -6,6 +6,8 @@ gRPC bridge for twist messages and whatever other types of data.
 
 * Run `make build` to generate files
 
+* Run `./mvnw package` to generate the package
+
 * in `pom.xml`, update `<version>`
 
 * Git push
