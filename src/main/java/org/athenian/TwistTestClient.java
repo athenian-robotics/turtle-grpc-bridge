@@ -1,7 +1,8 @@
 package org.athenian;
 
 import io.grpc.stub.StreamObserver;
-import twist_service.TwistData;
+import org.athenian.grpc.TwistData;
+
 
 public class TwistTestClient {
     public static void main(String[] args) {

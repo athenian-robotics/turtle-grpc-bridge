@@ -1,7 +1,7 @@
 package org.athenian;
 
 import io.grpc.Server;
-import twist_service.TwistData;
+import org.athenian.grpc.TwistData;
 
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;

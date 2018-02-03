@@ -5,13 +5,14 @@ import io.grpc.ManagedChannel;
 import io.grpc.Status;
 import io.grpc.netty.NettyChannelBuilder;
 import io.grpc.stub.StreamObserver;
-import twist_service.TwistData;
-import twist_service.TwistServiceGrpc;
+import org.athenian.grpc.TwistData;
+import org.athenian.grpc.TwistServiceGrpc;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-import static twist_service.TwistServiceGrpc.newBlockingStub;
-import static twist_service.TwistServiceGrpc.newStub;
+import static org.athenian.grpc.TwistServiceGrpc.newBlockingStub;
+import static org.athenian.grpc.TwistServiceGrpc.newStub;
+
 
 public class TwistClient {
     private final AtomicReference<TwistServiceGrpc.TwistServiceBlockingStub> blockingStubRef = new AtomicReference<>();

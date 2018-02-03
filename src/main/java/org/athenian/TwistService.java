@@ -6,10 +6,10 @@ import io.grpc.ServerBuilder;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
+import org.athenian.grpc.TwistData;
+import org.athenian.grpc.TwistServiceGrpc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import twist_service.TwistData;
-import twist_service.TwistServiceGrpc;
 
 import java.util.function.Consumer;
 
