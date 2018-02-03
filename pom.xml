@@ -21,8 +21,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.athenian</groupId>
-    <artifactId>grpc-bridge</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <artifactId>turtle-grpc-bridge</artifactId>
+    <version>1.0.2-SNAPSHOT</version>
 
 
     <properties>
@@ -212,7 +212,7 @@
                         </manifest>
                     </archive>
                 </configuration>
-                <!-- This includes sources in jar
+                <!-- This includes sources in jar -->
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -221,7 +221,7 @@
                         </goals>
                     </execution>
                 </executions>
-                -->
+                <!-- -->
             </plugin>
 
             <plugin>
