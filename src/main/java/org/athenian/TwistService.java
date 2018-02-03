@@ -1,3 +1,5 @@
+package org.athenian;
+
 import com.google.protobuf.Empty;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;

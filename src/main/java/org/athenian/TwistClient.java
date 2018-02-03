@@ -1,3 +1,5 @@
+package org.athenian;
+
 import com.google.protobuf.Empty;
 import io.grpc.ManagedChannel;
 import io.grpc.Status;
