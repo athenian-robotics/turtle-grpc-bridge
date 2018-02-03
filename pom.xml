@@ -212,7 +212,7 @@
                         </manifest>
                     </archive>
                 </configuration>
-                <!-- This includes sources in jar -->
+                <!-- This includes sources in jar
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -221,7 +221,7 @@
                         </goals>
                     </execution>
                 </executions>
-                <!-- -->
+                -->
             </plugin>
 
             <plugin>
