@@ -4,15 +4,15 @@ import io.grpc.stub.StreamObserver;
 import org.athenian.grpc.TwistData;
 
 
-public class RioBridgeTestClient {
+public class TwistSampleTestClient {
     public static void main(String[] args) {
-        RioBridgeClient rioBridgeClient = new RioBridgeClient(RioBridgeTest.hostname, RioBridgeTest.port);
+        TwistSampleClient twistSampleClient = new TwistSampleClient(RioBridgeConstants.hostname, RioBridgeConstants.port);
         System.out.println("Client started.");
 
         System.out.println("\nWrite test started");
         long timer = System.currentTimeMillis();
         for (double speed = 0; speed < 0.5; speed += 0.01) {
-            writeTwist(rioBridgeClient, speed, 0.25);
+            writeTwist(twistSampleClient, speed, 0.25);
         }
         System.out.printf("Write test finished in %f seconds",
                 (System.currentTimeMillis() - timer) / 1000d);
@@ -20,7 +20,7 @@ public class RioBridgeTestClient {
 
         System.out.println("\nStream test started.");
         timer = System.currentTimeMillis();
-        StreamObserver<TwistData> observer = rioBridgeClient.streamTwistData();
+        StreamObserver<TwistData> observer = twistSampleClient.streamTwistData();
         for (double angular = 0.25; angular > -0.25; angular -= 0.01) {
             streamTwist(observer, 0.5, angular);
         }
@@ -29,7 +29,7 @@ public class RioBridgeTestClient {
                 (System.currentTimeMillis() - timer) / 1000d);
     }
 
-    private static void writeTwist(RioBridgeClient rioBridgeClient, double speed, double angular) {
+    private static void writeTwist(TwistSampleClient rioBridgeClient, double speed, double angular) {
         TwistData twistData = TwistData.newBuilder()
                 .setLinearX(speed)
                 .setAngularZ(angular)

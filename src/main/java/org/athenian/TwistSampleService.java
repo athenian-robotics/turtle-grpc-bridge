@@ -7,25 +7,25 @@ import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
 import org.athenian.grpc.TwistData;
-import org.athenian.grpc.TwistServiceGrpc;
+import org.athenian.grpc.TwistSampleServiceGrpc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.function.Consumer;
 
-public class RioBridgeService extends TwistServiceGrpc.TwistServiceImplBase {
+public class TwistSampleService extends TwistSampleServiceGrpc.TwistSampleServiceImplBase {
 
-    private static final Logger logger = LoggerFactory.getLogger(RioBridgeService.class);
+    private static final Logger logger = LoggerFactory.getLogger(TwistSampleService.class);
 
     private final Consumer<TwistData> onMessage;
 
-    private RioBridgeService(Consumer<TwistData> onMessage) {
+    private TwistSampleService(Consumer<TwistData> onMessage) {
         this.onMessage = onMessage;
     }
 
     public static Server createServer(int port, Consumer<TwistData> onMessage) {
         return ServerBuilder.forPort(port)
-                .addService(new RioBridgeService(onMessage))
+                .addService(new TwistSampleService(onMessage))
                 .build();
     }
 

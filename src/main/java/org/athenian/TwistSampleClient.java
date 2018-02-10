@@ -6,20 +6,20 @@ import io.grpc.Status;
 import io.grpc.netty.NettyChannelBuilder;
 import io.grpc.stub.StreamObserver;
 import org.athenian.grpc.TwistData;
-import org.athenian.grpc.TwistServiceGrpc;
+import org.athenian.grpc.TwistSampleServiceGrpc;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-import static org.athenian.grpc.TwistServiceGrpc.newBlockingStub;
-import static org.athenian.grpc.TwistServiceGrpc.newStub;
+import static org.athenian.grpc.TwistSampleServiceGrpc.newBlockingStub;
+import static org.athenian.grpc.TwistSampleServiceGrpc.newStub;
 
 
-public class RioBridgeClient {
-    private final AtomicReference<TwistServiceGrpc.TwistServiceBlockingStub> blockingStubRef = new AtomicReference<>();
-    private final AtomicReference<TwistServiceGrpc.TwistServiceStub> asyncStubRef = new AtomicReference<>();
+public class TwistSampleClient {
+    private final AtomicReference<TwistSampleServiceGrpc.TwistSampleServiceBlockingStub> blockingStubRef = new AtomicReference<>();
+    private final AtomicReference<TwistSampleServiceGrpc.TwistSampleServiceStub> asyncStubRef = new AtomicReference<>();
 
 
-    public RioBridgeClient(String hostname, int port) {
+    public TwistSampleClient(String hostname, int port) {
         AtomicReference<ManagedChannel> channelRef = new AtomicReference<>();
         channelRef.set(NettyChannelBuilder.forAddress(hostname, port)
                 .usePlaintext(true)

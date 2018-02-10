@@ -27,11 +27,11 @@ service TwistSampleService {
 }
 
 service StrategyService {
-    rpc runStrategy (google.protobuf.StringValue) returns (stream TwistData);
+    rpc startStrategyStream (stream TwistData) returns (stream google.protobuf.StringValue);
 }
 
 service EncoderService {
-    rpc streamEncoders (stream EncoderData) returns (google.protobuf.Empty);
+    rpc startEncoderStream (google.protobuf.Empty) returns (stream EncoderData);
 }
 
 service HealthCheckService {
