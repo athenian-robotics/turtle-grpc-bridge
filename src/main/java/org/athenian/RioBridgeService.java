@@ -13,19 +13,19 @@ import org.slf4j.LoggerFactory;
 
 import java.util.function.Consumer;
 
-public class TwistService extends TwistServiceGrpc.TwistServiceImplBase {
+public class RioBridgeService extends TwistServiceGrpc.TwistServiceImplBase {
 
-    private static final Logger logger = LoggerFactory.getLogger(TwistService.class);
+    private static final Logger logger = LoggerFactory.getLogger(RioBridgeService.class);
 
     private final Consumer<TwistData> onMessage;
 
-    private TwistService(Consumer<TwistData> onMessage) {
+    private RioBridgeService(Consumer<TwistData> onMessage) {
         this.onMessage = onMessage;
     }
 
     public static Server createServer(int port, Consumer<TwistData> onMessage) {
         return ServerBuilder.forPort(port)
-                .addService(new TwistService(onMessage))
+                .addService(new RioBridgeService(onMessage))
                 .build();
     }
 

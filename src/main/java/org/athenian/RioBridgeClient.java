@@ -14,12 +14,12 @@ import static org.athenian.grpc.TwistServiceGrpc.newBlockingStub;
 import static org.athenian.grpc.TwistServiceGrpc.newStub;
 
 
-public class TwistClient {
+public class RioBridgeClient {
     private final AtomicReference<TwistServiceGrpc.TwistServiceBlockingStub> blockingStubRef = new AtomicReference<>();
     private final AtomicReference<TwistServiceGrpc.TwistServiceStub> asyncStubRef = new AtomicReference<>();
 
 
-    public TwistClient(String hostname, int port) {
+    public RioBridgeClient(String hostname, int port) {
         AtomicReference<ManagedChannel> channelRef = new AtomicReference<>();
         channelRef.set(NettyChannelBuilder.forAddress(hostname, port)
                 .usePlaintext(true)
