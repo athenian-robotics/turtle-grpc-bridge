@@ -1,6 +1,5 @@
 package org.athenian;
 
-import com.google.protobuf.Empty;
 import com.google.protobuf.StringValue;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -9,7 +8,6 @@ import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
 import org.athenian.grpc.StrategyServiceGrpc;
 import org.athenian.grpc.TwistData;
-import org.athenian.grpc.TwistSampleServiceGrpc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
