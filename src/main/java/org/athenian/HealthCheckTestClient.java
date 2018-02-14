@@ -19,18 +19,18 @@ public class HealthCheckTestClient {
     }
 
     private void run() {
-        StrategyClient client = new StrategyClient(
+        HealthCheckClient client = new HealthCheckClient(
                 RioBridgeConstants.hostname,
                 RioBridgeConstants.port,
                 this::onMessage);
 
-        finishLatch = client.startStrategyStream();
+        finishLatch = client.startHealthCheck();
         System.out.println("Client started.");
 
         while (finishLatch.getCount() > 0) {
             StringValue healthData = StringValue.newBuilder().setValue(messages[message]).build();
             System.out.printf("Client sent: %s\n", healthData.toString());
-            client.sendTwistData(healthData);
+            client.sendStringValue(healthData);
 
             try {
                 Thread.sleep(50);
