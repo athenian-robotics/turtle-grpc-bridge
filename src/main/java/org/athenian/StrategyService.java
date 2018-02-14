@@ -13,39 +13,46 @@ import org.athenian.grpc.TwistSampleServiceGrpc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 
 public class StrategyService extends StrategyServiceGrpc.StrategyServiceImplBase {
 
     private static final Logger logger = LoggerFactory.getLogger(StrategyService.class);
+    private Server server;
 
     private final Consumer<TwistData> onMessage;
-    private StreamObserver<StringValue> strategyObserver;
+    private final AtomicReference<StreamObserver<StringValue>> strategyObserver = new AtomicReference<>();
 
-    private StrategyService(Consumer<TwistData> onMessage) {
+    public StrategyService(int port, Consumer<TwistData> onMessage) {
         this.onMessage = onMessage;
-    }
-
-    public static Server createServer(int port, Consumer<TwistData> onMessage) {
-        return ServerBuilder.forPort(port)
-                .addService(new StrategyService(onMessage))
+        server = ServerBuilder.forPort(port)
+                .addService(this)
                 .build();
     }
 
-    public void runStrategy(String strategy) {
-        if (strategyObserver == null) {
-            System.out.println("Error in runStrategy(): connection to client is not established");
-            logger.info("Error in runStrategy(): connection to client is not established");
+    public void start() throws IOException {
+        server.start();
+    }
+
+    public boolean isConnected() {
+        return strategyObserver.get() != null;
+    }
+
+    public void sendStrategy(String strategy) {
+        StreamObserver<StringValue> observer = strategyObserver.get();
+        if (observer == null) {
+            logger.info("Error in sendStrategy(): connection to client is not established");
             return;
         }
 
-        strategyObserver.onNext(StringValue.newBuilder().setValue(strategy).build());
-        strategyObserver.onCompleted();
+        observer.onNext(StringValue.newBuilder().setValue(strategy).build());
     }
 
     @Override
     public StreamObserver<TwistData> startStrategyStream(StreamObserver<StringValue> responseObserver) {
-        strategyObserver = responseObserver;
+        strategyObserver.set(responseObserver);
 
         return new StreamObserver<TwistData>() {
             @Override
@@ -65,13 +72,15 @@ public class StrategyService extends StrategyServiceGrpc.StrategyServiceImplBase
                 catch (StatusRuntimeException e) {
                     // Do nothing
                 }
-                strategyObserver = null;  // No longer connected
+                strategyObserver.set(null);  // No longer connected
             }
 
             @Override
             public void onCompleted() {
                 responseObserver.onNext(StringValue.getDefaultInstance());
                 responseObserver.onCompleted();
+
+                strategyObserver.set(null);  // No longer connected
             }
         };
     }

@@ -38,7 +38,6 @@ public class TwistSampleService extends TwistSampleServiceGrpc.TwistSampleServic
 
     @Override
     public StreamObserver<TwistData> streamTwistData(StreamObserver<Empty> responseObserver) {
-        // TODO write something here
         return new StreamObserver<TwistData>() {
             @Override
             public void onNext(TwistData twistData) {
