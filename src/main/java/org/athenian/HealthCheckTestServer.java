@@ -4,12 +4,24 @@ import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 public class HealthCheckTestServer {
-    public static void main(String[] args) throws IOException, InterruptedException {
-        StrategyService service = new StrategyService(RioBridgeConstants.port, message ->
-                System.out.printf("Server got: %s\n", message.toString())
-        );
+    private static String[] messages = {"Lorem ipsum", "dolor sit amet", "consectetur adipiscing elit"};
+    int message = 0;
 
-        service.start();
+    public static void main(String[] args) {
+        new HealthCheckTestServer().run();
+    }
+
+    private void run() {
+        HealthCheckService service = new HealthCheckService(
+                RioBridgeConstants.port,
+                this::onMessage);
+
+        try {
+            service.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         System.out.println("Server started.  Waiting for connection...");
         while (!service.isConnected()) {
             try {
@@ -21,19 +33,25 @@ public class HealthCheckTestServer {
         }
 
         CountDownLatch finishLatch = new CountDownLatch(1);
-        int strategy = 0;
+        System.out.println("Connection established.");
 
         while (finishLatch.getCount() > 0) {
-            System.out.printf("\nStarting strategy %d\n", strategy);
-            service.sendStrategy(Integer.toString(strategy));
-            strategy = (strategy + 1) % 4;
+            String healthCheck = messages[message];
+            System.out.printf("\nServer sent: %s\n", healthCheck);
+            service.sendHealthCheck(healthCheck);
+
+            message = (message + 1) % 3;
 
             try {
-                Thread.sleep(2000);
+                Thread.sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 finishLatch.countDown();
             }
         }
+    }
+
+    private void onMessage(String healthCheck) {
+        System.out.printf("Server got: \"%s\"\n", healthCheck);
     }
 }

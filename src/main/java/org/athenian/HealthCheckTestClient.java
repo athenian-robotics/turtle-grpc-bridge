@@ -1,18 +1,10 @@
 package org.athenian;
 
-import com.google.protobuf.StringValue;
-import org.athenian.grpc.TwistData;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Supplier;
 
 public class HealthCheckTestClient {
     private static String[] messages = {"The quick brown fox", "jumped over", "the lazy dog"};
     int message = 0;
-    private CountDownLatch finishLatch;
 
     public static void main(String[] args) {
         new HealthCheckTestClient().run();
@@ -24,13 +16,15 @@ public class HealthCheckTestClient {
                 RioBridgeConstants.port,
                 this::onMessage);
 
-        finishLatch = client.startHealthCheck();
+        CountDownLatch finishLatch = client.startHealthCheck();
         System.out.println("Client started.");
 
         while (finishLatch.getCount() > 0) {
-            StringValue healthData = StringValue.newBuilder().setValue(messages[message]).build();
-            System.out.printf("Client sent: %s\n", healthData.toString());
-            client.sendStringValue(healthData);
+            String healthCheck = messages[message];
+            System.out.printf("Client sent: %s\n", healthCheck);
+            client.sendHealthCheck(healthCheck);
+
+            message = (message + 1) % 3;
 
             try {
                 Thread.sleep(50);
@@ -41,11 +35,7 @@ public class HealthCheckTestClient {
         }
     }
 
-    private void onMessage(StringValue message) {
-        System.out.printf("Client got: \"%s\"\n", message.toString());
-    }
-
-    private void onInvalid(String message) {
-        System.out.printf("\nIgnored invalid strategy: %s\n", message);
+    private void onMessage(String healthCheck) {
+        System.out.printf("Client got: \"%s\"\n", healthCheck);
     }
 }

@@ -19,10 +19,10 @@ public class HealthCheckClient {
     private final AtomicReference<HealthCheckServiceGrpc.HealthCheckServiceBlockingStub> blockingStubRef = new AtomicReference<>();
     private final AtomicReference<HealthCheckServiceGrpc.HealthCheckServiceStub> asyncStubRef = new AtomicReference<>();
 
-    private final Consumer<StringValue> onMessage;
+    private final Consumer<String> onMessage;
     private final AtomicReference<StreamObserver<StringValue>> messageObserver = new AtomicReference<>();
 
-    public HealthCheckClient(String hostname, int port, Consumer<StringValue> onMessage) {
+    public HealthCheckClient(String hostname, int port, Consumer<String> onMessage) {
         AtomicReference<ManagedChannel> channelRef = new AtomicReference<>();
         channelRef.set(NettyChannelBuilder.forAddress(hostname, port)
                 .usePlaintext(true)
@@ -33,8 +33,8 @@ public class HealthCheckClient {
         this.onMessage = onMessage;
     }
 
-    public void sendStringValue(StringValue stringValue) {
-        messageObserver.get().onNext(stringValue);
+    public void sendHealthCheck(String healthCheck) {
+        messageObserver.get().onNext(StringValue.newBuilder().setValue(healthCheck).build());
     }
 
     public CountDownLatch startHealthCheck() {
@@ -43,7 +43,7 @@ public class HealthCheckClient {
         messageObserver.set(asyncStubRef.get().healthCheck(new StreamObserver<StringValue>() {
             @Override
             public void onNext(StringValue healthCheck) {
-                onMessage.accept(healthCheck);
+                onMessage.accept(healthCheck.getValue());
             }
 
             @Override

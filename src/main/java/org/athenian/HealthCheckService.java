@@ -19,10 +19,10 @@ public class HealthCheckService extends HealthCheckServiceGrpc.HealthCheckServic
     private static final Logger logger = LoggerFactory.getLogger(HealthCheckService.class);
     private Server server;
 
-    private final Consumer<StringValue> onMessage;
+    private final Consumer<String> onMessage;
     private final AtomicReference<StreamObserver<StringValue>> messageObserver = new AtomicReference<>();
 
-    public HealthCheckService(int port, Consumer<StringValue> onMessage) {
+    public HealthCheckService(int port, Consumer<String> onMessage) {
         this.onMessage = onMessage;
         server = ServerBuilder.forPort(port)
                 .addService(this)
@@ -53,8 +53,8 @@ public class HealthCheckService extends HealthCheckServiceGrpc.HealthCheckServic
 
         return new StreamObserver<StringValue>() {
             @Override
-            public void onNext(StringValue StringValue) {
-                onMessage.accept(StringValue);
+            public void onNext(StringValue healthCheck) {
+                onMessage.accept(healthCheck.getValue());
             }
 
             @Override
