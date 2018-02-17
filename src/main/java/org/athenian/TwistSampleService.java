@@ -29,12 +29,15 @@ public class TwistSampleService extends TwistSampleServiceGrpc.TwistSampleServic
                 .build();
     }
 
+    // DEPRECATED writeTwistData()
+    /*
     @Override
     public void writeTwistData(TwistData request, StreamObserver<Empty> responseObserver) {
         onMessage.accept(request);
         responseObserver.onNext(Empty.getDefaultInstance());
         responseObserver.onCompleted();
     }
+    */
 
     @Override
     public StreamObserver<TwistData> streamTwistData(StreamObserver<Empty> responseObserver) {

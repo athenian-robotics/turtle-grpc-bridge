@@ -3,16 +3,16 @@ package org.athenian;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
-public class HealthCheckTestServer {
+public class CommandTestServer {
     private static String[] messages = {"Lorem ipsum", "dolor sit amet", "consectetur adipiscing elit"};
     int message = 0;
 
     public static void main(String[] args) {
-        new HealthCheckTestServer().run();
+        new CommandTestServer().run();
     }
 
     private void run() {
-        HealthCheckService service = new HealthCheckService(
+        CommandService service = new CommandService(
                 RioBridgeConstants.port,
                 this::onMessage);
 
@@ -36,9 +36,9 @@ public class HealthCheckTestServer {
         System.out.println("Connection established.");
 
         while (finishLatch.getCount() > 0) {
-            String healthCheck = messages[message];
-            System.out.printf("\nServer sent: %s\n", healthCheck);
-            service.sendHealthCheck(healthCheck);
+            String command = messages[message];
+            System.out.printf("\nServer sent: %s\n", command);
+            service.sendCommand(command);
 
             message = (message + 1) % 3;
 
@@ -51,7 +51,7 @@ public class HealthCheckTestServer {
         }
     }
 
-    private void onMessage(String healthCheck) {
-        System.out.printf("Server got: \"%s\"\n", healthCheck);
+    private void onMessage(String command) {
+        System.out.printf("Server got: \"%s\"\n", command);
     }
 }

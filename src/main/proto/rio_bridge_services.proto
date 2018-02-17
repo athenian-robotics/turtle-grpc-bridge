@@ -22,12 +22,17 @@ message EncoderData {
 }
 
 service TwistSampleService {
-    rpc writeTwistData (TwistData) returns (google.protobuf.Empty);
-    rpc streamTwistData (stream TwistData) returns (google.protobuf.Empty);
+    // DEPRECATED blockingStubRef and writeTwistData()
+    // rpc writeTwistData (TwistData) returns (google.protobuf.Empty);
+    rpc streamTwistData (stream TwistData) returns (stream google.protobuf.Empty);
 }
 
 service StrategyService {
     rpc startStrategyStream (stream TwistData) returns (stream google.protobuf.StringValue);
+}
+
+service CommandService {
+    rpc startCommandStream (stream google.protobuf.StringValue) returns (stream google.protobuf.StringValue);
 }
 
 service EncoderService {

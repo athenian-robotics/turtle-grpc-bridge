@@ -16,5 +16,7 @@ public class TwistSampleTestServer {
 
         CountDownLatch latch = new CountDownLatch(1);
         latch.await();
+
+        System.out.println("Connection completed successfully.");
     }
 }
