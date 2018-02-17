@@ -1,5 +1,8 @@
 package org.athenian;
 
+import io.grpc.Server;
+import io.grpc.ServerBuilder;
+
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
@@ -12,12 +15,13 @@ public class CommandTestServer {
     }
 
     private void run() {
-        CommandService service = new CommandService(
-                RioBridgeConstants.port,
-                this::onMessage);
+        CommandService service = new CommandService(this::onMessage);
+        Server server = ServerBuilder.forPort(RioBridgeConstants.port)
+                .addService(service)
+                .build();
 
         try {
-            service.start();
+            server.start();
         } catch (IOException e) {
             e.printStackTrace();
         }

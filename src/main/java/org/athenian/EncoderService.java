@@ -1,9 +1,7 @@
 package org.athenian;
 
 import com.google.protobuf.Empty;
-import com.google.protobuf.StringValue;
 import io.grpc.Server;
-import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import org.athenian.grpc.EncoderServiceGrpc;
 import org.athenian.grpc.EncoderData;
@@ -16,18 +14,11 @@ import java.util.concurrent.atomic.AtomicReference;
 public class EncoderService extends EncoderServiceGrpc.EncoderServiceImplBase {
 
     private static final Logger logger = LoggerFactory.getLogger(EncoderService.class);
-    private Server server;
 
     private AtomicReference<StreamObserver<EncoderData>> encoderObserver = new AtomicReference<>();
 
-    public EncoderService(int port) {
-        server = ServerBuilder.forPort(port)
-                .addService(this)
-                .build();
-    }
+    public EncoderService() {
 
-    public void start() throws IOException {
-        server.start();
     }
 
     public boolean isConnected() {

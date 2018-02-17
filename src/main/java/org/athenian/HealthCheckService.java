@@ -17,20 +17,12 @@ import java.util.function.Consumer;
 public class HealthCheckService extends HealthCheckServiceGrpc.HealthCheckServiceImplBase {
 
     private static final Logger logger = LoggerFactory.getLogger(HealthCheckService.class);
-    private Server server;
 
     private final Consumer<String> onMessage;
     private final AtomicReference<StreamObserver<StringValue>> messageObserver = new AtomicReference<>();
 
-    public HealthCheckService(int port, Consumer<String> onMessage) {
+    public HealthCheckService(Consumer<String> onMessage) {
         this.onMessage = onMessage;
-        server = ServerBuilder.forPort(port)
-                .addService(this)
-                .build();
-    }
-
-    public void start() throws IOException {
-        server.start();
     }
 
     public boolean isConnected() {

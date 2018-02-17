@@ -2,19 +2,29 @@ package org.athenian;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import org.athenian.grpc.EncoderData;
 
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
-public class EncoderTestServer {
-    public static void main(String[] args) throws IOException, InterruptedException {
-        EncoderService service = new EncoderService();
+public class HealthCheckTestServer {
+    private static String[] messages = {"Lorem ipsum", "dolor sit amet", "consectetur adipiscing elit"};
+    int message = 0;
+
+    public static void main(String[] args) {
+        new HealthCheckTestServer().run();
+    }
+
+    private void run() {
+        HealthCheckService service = new HealthCheckService(this::onMessage);
         Server server = ServerBuilder.forPort(RioBridgeConstants.port)
                 .addService(service)
                 .build();
 
-        server.start();
+        try {
+            server.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         System.out.println("Server started.  Waiting for connection...");
         while (!service.isConnected()) {
@@ -27,14 +37,14 @@ public class EncoderTestServer {
         }
 
         CountDownLatch finishLatch = new CountDownLatch(1);
+        System.out.println("Connection established.");
 
         while (finishLatch.getCount() > 0) {
-            EncoderData encoderData = EncoderData.newBuilder()
-                    .setLeft(Math.random() * 2 - 1)
-                    .setRight(Math.random() * 2 - 1)
-                    .build();
-            System.out.printf("\nServer sent: %s\n", encoderData.toString());
-            service.sendEncoderData(encoderData);
+            String healthCheck = messages[message];
+            System.out.printf("\nServer sent: %s\n", healthCheck);
+            service.sendHealthCheck(healthCheck);
+
+            message = (message + 1) % 3;
 
             try {
                 Thread.sleep(50);
@@ -43,5 +53,9 @@ public class EncoderTestServer {
                 finishLatch.countDown();
             }
         }
+    }
+
+    private void onMessage(String healthCheck) {
+        System.out.printf("Server got: \"%s\"\n", healthCheck);
     }
 }

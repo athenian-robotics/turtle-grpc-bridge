@@ -17,20 +17,12 @@ import java.util.function.Consumer;
 public class CommandService extends CommandServiceGrpc.CommandServiceImplBase {
 
     private static final Logger logger = LoggerFactory.getLogger(CommandService.class);
-    private Server server;
 
     private final Consumer<String> onMessage;
     private final AtomicReference<StreamObserver<StringValue>> messageObserver = new AtomicReference<>();
 
-    public CommandService(int port, Consumer<String> onMessage) {
+    public CommandService(Consumer<String> onMessage) {
         this.onMessage = onMessage;
-        server = ServerBuilder.forPort(port)
-                .addService(this)
-                .build();
-    }
-
-    public void start() throws IOException {
-        server.start();
     }
 
     public boolean isConnected() {

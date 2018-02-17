@@ -2,7 +2,6 @@ package org.athenian;
 
 import com.google.protobuf.StringValue;
 import io.grpc.Server;
-import io.grpc.ServerBuilder;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
@@ -18,20 +17,12 @@ import java.util.function.Consumer;
 public class StrategyService extends StrategyServiceGrpc.StrategyServiceImplBase {
 
     private static final Logger logger = LoggerFactory.getLogger(StrategyService.class);
-    private Server server;
 
     private final Consumer<TwistData> onMessage;
     private final AtomicReference<StreamObserver<StringValue>> strategyObserver = new AtomicReference<>();
 
-    public StrategyService(int port, Consumer<TwistData> onMessage) {
+    public StrategyService(Consumer<TwistData> onMessage) {
         this.onMessage = onMessage;
-        server = ServerBuilder.forPort(port)
-                .addService(this)
-                .build();
-    }
-
-    public void start() throws IOException {
-        server.start();
     }
 
     public boolean isConnected() {

@@ -1,15 +1,22 @@
 package org.athenian;
 
+import io.grpc.Server;
+import io.grpc.ServerBuilder;
+
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 public class StrategyTestServer {
     public static void main(String[] args) throws IOException, InterruptedException {
-        StrategyService service = new StrategyService(RioBridgeConstants.port, twistData ->
+        StrategyService service = new StrategyService(twistData ->
                 System.out.printf("Server got: %s\n", twistData.toString())
         );
+        Server server = ServerBuilder.forPort(RioBridgeConstants.port)
+                .addService(service)
+                .build();
 
-        service.start();
+        server.start();
+
         System.out.println("Server started.  Waiting for connection...");
         while (!service.isConnected()) {
             try {
