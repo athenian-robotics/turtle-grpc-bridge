@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='rio_bridge_services.proto',
   package='twist_service',
   syntax='proto3',
-  serialized_pb=_b('\n\x19rio_bridge_services.proto\x12\rtwist_service\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\"z\n\tTwistData\x12\x10\n\x08linear_x\x18\x01 \x01(\x01\x12\x10\n\x08linear_y\x18\x02 \x01(\x01\x12\x10\n\x08linear_z\x18\x03 \x01(\x01\x12\x11\n\tangular_x\x18\x04 \x01(\x01\x12\x11\n\tangular_y\x18\x05 \x01(\x01\x12\x11\n\tangular_z\x18\x06 \x01(\x01\"*\n\x0b\x45ncoderData\x12\x0c\n\x04left\x18\x01 \x01(\x01\x12\r\n\x05right\x18\x02 \x01(\x01\x32\x9f\x01\n\x12TwistSampleService\x12\x42\n\x0ewriteTwistData\x12\x18.twist_service.TwistData\x1a\x16.google.protobuf.Empty\x12\x45\n\x0fstreamTwistData\x12\x18.twist_service.TwistData\x1a\x16.google.protobuf.Empty(\x01\x32\x64\n\x0fStrategyService\x12Q\n\x13startStrategyStream\x12\x18.twist_service.TwistData\x1a\x1c.google.protobuf.StringValue(\x01\x30\x01\x32\\\n\x0e\x45ncoderService\x12J\n\x12startEncoderStream\x12\x16.google.protobuf.Empty\x1a\x1a.twist_service.EncoderData0\x01\x32\x63\n\x12HealthCheckService\x12M\n\x0bhealthCheck\x12\x1c.google.protobuf.StringValue\x1a\x1c.google.protobuf.StringValue(\x01\x30\x01\x42\x15\n\x11org.athenian.grpcP\x01P\x00P\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x19rio_bridge_services.proto\x12\rtwist_service\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\"z\n\tTwistData\x12\x10\n\x08linear_x\x18\x01 \x01(\x01\x12\x10\n\x08linear_y\x18\x02 \x01(\x01\x12\x10\n\x08linear_z\x18\x03 \x01(\x01\x12\x11\n\tangular_x\x18\x04 \x01(\x01\x12\x11\n\tangular_y\x18\x05 \x01(\x01\x12\x11\n\tangular_z\x18\x06 \x01(\x01\"*\n\x0b\x45ncoderData\x12\x0c\n\x04left\x18\x01 \x01(\x01\x12\r\n\x05right\x18\x02 \x01(\x01\x32]\n\x12TwistSampleService\x12G\n\x0fstreamTwistData\x12\x18.twist_service.TwistData\x1a\x16.google.protobuf.Empty(\x01\x30\x01\x32\x64\n\x0fStrategyService\x12Q\n\x13startStrategyStream\x12\x18.twist_service.TwistData\x1a\x1c.google.protobuf.StringValue(\x01\x30\x01\x32\x66\n\x0e\x43ommandService\x12T\n\x12startCommandStream\x12\x1c.google.protobuf.StringValue\x1a\x1c.google.protobuf.StringValue(\x01\x30\x01\x32\\\n\x0e\x45ncoderService\x12J\n\x12startEncoderStream\x12\x16.google.protobuf.Empty\x1a\x1a.twist_service.EncoderData0\x01\x32\x63\n\x12HealthCheckService\x12M\n\x0bhealthCheck\x12\x1c.google.protobuf.StringValue\x1a\x1c.google.protobuf.StringValue(\x01\x30\x01\x42\x15\n\x11org.athenian.grpcP\x01P\x00P\x01\x62\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,],
   public_dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,])
@@ -162,22 +162,13 @@ _TWISTSAMPLESERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=274,
-  serialized_end=433,
+  serialized_start=273,
+  serialized_end=366,
   methods=[
-  _descriptor.MethodDescriptor(
-    name='writeTwistData',
-    full_name='twist_service.TwistSampleService.writeTwistData',
-    index=0,
-    containing_service=None,
-    input_type=_TWISTDATA,
-    output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
-    options=None,
-  ),
   _descriptor.MethodDescriptor(
     name='streamTwistData',
     full_name='twist_service.TwistSampleService.streamTwistData',
-    index=1,
+    index=0,
     containing_service=None,
     input_type=_TWISTDATA,
     output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
@@ -195,8 +186,8 @@ _STRATEGYSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=435,
-  serialized_end=535,
+  serialized_start=368,
+  serialized_end=468,
   methods=[
   _descriptor.MethodDescriptor(
     name='startStrategyStream',
@@ -213,14 +204,38 @@ _sym_db.RegisterServiceDescriptor(_STRATEGYSERVICE)
 DESCRIPTOR.services_by_name['StrategyService'] = _STRATEGYSERVICE
 
 
+_COMMANDSERVICE = _descriptor.ServiceDescriptor(
+  name='CommandService',
+  full_name='twist_service.CommandService',
+  file=DESCRIPTOR,
+  index=2,
+  options=None,
+  serialized_start=470,
+  serialized_end=572,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='startCommandStream',
+    full_name='twist_service.CommandService.startCommandStream',
+    index=0,
+    containing_service=None,
+    input_type=google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE,
+    output_type=google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE,
+    options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_COMMANDSERVICE)
+
+DESCRIPTOR.services_by_name['CommandService'] = _COMMANDSERVICE
+
+
 _ENCODERSERVICE = _descriptor.ServiceDescriptor(
   name='EncoderService',
   full_name='twist_service.EncoderService',
   file=DESCRIPTOR,
-  index=2,
+  index=3,
   options=None,
-  serialized_start=537,
-  serialized_end=629,
+  serialized_start=574,
+  serialized_end=666,
   methods=[
   _descriptor.MethodDescriptor(
     name='startEncoderStream',
@@ -241,10 +256,10 @@ _HEALTHCHECKSERVICE = _descriptor.ServiceDescriptor(
   name='HealthCheckService',
   full_name='twist_service.HealthCheckService',
   file=DESCRIPTOR,
-  index=3,
+  index=4,
   options=None,
-  serialized_start=631,
-  serialized_end=730,
+  serialized_start=668,
+  serialized_end=767,
   methods=[
   _descriptor.MethodDescriptor(
     name='healthCheck',

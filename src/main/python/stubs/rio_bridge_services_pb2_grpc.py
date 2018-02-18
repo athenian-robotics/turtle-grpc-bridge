@@ -16,12 +16,7 @@ class TwistSampleServiceStub(object):
     Args:
       channel: A grpc.Channel.
     """
-    self.writeTwistData = channel.unary_unary(
-        '/twist_service.TwistSampleService/writeTwistData',
-        request_serializer=rio__bridge__services__pb2.TwistData.SerializeToString,
-        response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-        )
-    self.streamTwistData = channel.stream_unary(
+    self.streamTwistData = channel.stream_stream(
         '/twist_service.TwistSampleService/streamTwistData',
         request_serializer=rio__bridge__services__pb2.TwistData.SerializeToString,
         response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
@@ -32,16 +27,10 @@ class TwistSampleServiceServicer(object):
   # missing associated documentation comment in .proto file
   pass
 
-  def writeTwistData(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
   def streamTwistData(self, request_iterator, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """DEPRECATED blockingStubRef and writeTwistData()
+    rpc writeTwistData (TwistData) returns (google.protobuf.Empty);
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
@@ -49,12 +38,7 @@ class TwistSampleServiceServicer(object):
 
 def add_TwistSampleServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
-      'writeTwistData': grpc.unary_unary_rpc_method_handler(
-          servicer.writeTwistData,
-          request_deserializer=rio__bridge__services__pb2.TwistData.FromString,
-          response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-      ),
-      'streamTwistData': grpc.stream_unary_rpc_method_handler(
+      'streamTwistData': grpc.stream_stream_rpc_method_handler(
           servicer.streamTwistData,
           request_deserializer=rio__bridge__services__pb2.TwistData.FromString,
           response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
@@ -104,6 +88,48 @@ def add_StrategyServiceServicer_to_server(servicer, server):
   }
   generic_handler = grpc.method_handlers_generic_handler(
       'twist_service.StrategyService', rpc_method_handlers)
+  server.add_generic_rpc_handlers((generic_handler,))
+
+
+class CommandServiceStub(object):
+  # missing associated documentation comment in .proto file
+  pass
+
+  def __init__(self, channel):
+    """Constructor.
+
+    Args:
+      channel: A grpc.Channel.
+    """
+    self.startCommandStream = channel.stream_stream(
+        '/twist_service.CommandService/startCommandStream',
+        request_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+        response_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+        )
+
+
+class CommandServiceServicer(object):
+  # missing associated documentation comment in .proto file
+  pass
+
+  def startCommandStream(self, request_iterator, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+
+def add_CommandServiceServicer_to_server(servicer, server):
+  rpc_method_handlers = {
+      'startCommandStream': grpc.stream_stream_rpc_method_handler(
+          servicer.startCommandStream,
+          request_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+          response_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+      ),
+  }
+  generic_handler = grpc.method_handlers_generic_handler(
+      'twist_service.CommandService', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))
 
 
