@@ -23,10 +23,12 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='rio_bridge_services.proto',
   package='twist_service',
   syntax='proto3',
-  serialized_pb=_b('\n\x19rio_bridge_services.proto\x12\rtwist_service\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\"z\n\tTwistData\x12\x10\n\x08linear_x\x18\x01 \x01(\x01\x12\x10\n\x08linear_y\x18\x02 \x01(\x01\x12\x10\n\x08linear_z\x18\x03 \x01(\x01\x12\x11\n\tangular_x\x18\x04 \x01(\x01\x12\x11\n\tangular_y\x18\x05 \x01(\x01\x12\x11\n\tangular_z\x18\x06 \x01(\x01\"*\n\x0b\x45ncoderData\x12\x0c\n\x04left\x18\x01 \x01(\x01\x12\r\n\x05right\x18\x02 \x01(\x01\x32\x9f\x01\n\x12TwistSampleService\x12\x42\n\x0ewriteTwistData\x12\x18.twist_service.TwistData\x1a\x16.google.protobuf.Empty\x12\x45\n\x0fstreamTwistData\x12\x18.twist_service.TwistData\x1a\x16.google.protobuf.Empty(\x01\x32\x64\n\x0fStrategyService\x12Q\n\x13startStrategyStream\x12\x18.twist_service.TwistData\x1a\x1c.google.protobuf.StringValue(\x01\x30\x01\x32\\\n\x0e\x45ncoderService\x12J\n\x12startEncoderStream\x12\x16.google.protobuf.Empty\x1a\x1a.twist_service.EncoderData0\x01\x32\x63\n\x12HealthCheckService\x12M\n\x0bhealthCheck\x12\x1c.google.protobuf.StringValue\x1a\x1c.google.protobuf.StringValue(\x01\x30\x01\x42\x15\n\x11org.athenian.grpcP\x01P\x00P\x01\x62\x06proto3')
+    serialized_pb=_b(
+        '\n\x19rio_bridge_services.proto\x12\rtwist_service\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\"z\n\tTwistData\x12\x10\n\x08linear_x\x18\x01 \x01(\x01\x12\x10\n\x08linear_y\x18\x02 \x01(\x01\x12\x10\n\x08linear_z\x18\x03 \x01(\x01\x12\x11\n\tangular_x\x18\x04 \x01(\x01\x12\x11\n\tangular_y\x18\x05 \x01(\x01\x12\x11\n\tangular_z\x18\x06 \x01(\x01\"*\n\x0b\x45ncoderData\x12\x0c\n\x04left\x18\x01 \x01(\x01\x12\r\n\x05right\x18\x02 \x01(\x01\x32]\n\x12TwistSampleService\x12G\n\x0fstreamTwistData\x12\x18.twist_service.TwistData\x1a\x16.google.protobuf.Empty(\x01\x30\x01\x32\x64\n\x0fStrategyService\x12Q\n\x13startStrategyStream\x12\x18.twist_service.TwistData\x1a\x1c.google.protobuf.StringValue(\x01\x30\x01\x32\x66\n\x0e\x43ommandService\x12T\n\x12startCommandStream\x12\x1c.google.protobuf.StringValue\x1a\x1c.google.protobuf.StringValue(\x01\x30\x01\x32\\\n\x0e\x45ncoderService\x12J\n\x12startEncoderStream\x12\x16.google.protobuf.Empty\x1a\x1a.twist_service.EncoderData0\x01\x32\x63\n\x12HealthCheckService\x12M\n\x0bhealthCheck\x12\x1c.google.protobuf.StringValue\x1a\x1c.google.protobuf.StringValue(\x01\x30\x01\x42\x15\n\x11org.athenian.grpcP\x01P\x00P\x01\x62\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,],
   public_dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,google_dot_protobuf_dot_wrappers__pb2.DESCRIPTOR,])
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
 
@@ -44,42 +46,42 @@ _TWISTDATA = _descriptor.Descriptor(
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+        options=None),
     _descriptor.FieldDescriptor(
       name='linear_y', full_name='twist_service.TwistData.linear_y', index=1,
       number=2, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+        options=None),
     _descriptor.FieldDescriptor(
       name='linear_z', full_name='twist_service.TwistData.linear_z', index=2,
       number=3, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+        options=None),
     _descriptor.FieldDescriptor(
       name='angular_x', full_name='twist_service.TwistData.angular_x', index=3,
       number=4, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+        options=None),
     _descriptor.FieldDescriptor(
       name='angular_y', full_name='twist_service.TwistData.angular_y', index=4,
       number=5, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+        options=None),
     _descriptor.FieldDescriptor(
       name='angular_z', full_name='twist_service.TwistData.angular_z', index=5,
       number=6, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+        options=None),
   ],
   extensions=[
   ],
@@ -110,14 +112,14 @@ _ENCODERDATA = _descriptor.Descriptor(
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+        options=None),
     _descriptor.FieldDescriptor(
       name='right', full_name='twist_service.EncoderData.right', index=1,
       number=2, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+        options=None),
   ],
   extensions=[
   ],
@@ -136,7 +138,6 @@ _ENCODERDATA = _descriptor.Descriptor(
 
 DESCRIPTOR.message_types_by_name['TwistData'] = _TWISTDATA
 DESCRIPTOR.message_types_by_name['EncoderData'] = _ENCODERDATA
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 TwistData = _reflection.GeneratedProtocolMessageType('TwistData', (_message.Message,), dict(
   DESCRIPTOR = _TWISTDATA,
@@ -155,109 +156,566 @@ _sym_db.RegisterMessage(EncoderData)
 
 DESCRIPTOR.has_options = True
 DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n\021org.athenian.grpcP\001'))
-
-_TWISTSAMPLESERVICE = _descriptor.ServiceDescriptor(
-  name='TwistSampleService',
-  full_name='twist_service.TwistSampleService',
-  file=DESCRIPTOR,
-  index=0,
-  options=None,
-  serialized_start=274,
-  serialized_end=433,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='writeTwistData',
-    full_name='twist_service.TwistSampleService.writeTwistData',
-    index=0,
-    containing_service=None,
-    input_type=_TWISTDATA,
-    output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
-    options=None,
-  ),
-  _descriptor.MethodDescriptor(
-    name='streamTwistData',
-    full_name='twist_service.TwistSampleService.streamTwistData',
-    index=1,
-    containing_service=None,
-    input_type=_TWISTDATA,
-    output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
-    options=None,
-  ),
-])
-_sym_db.RegisterServiceDescriptor(_TWISTSAMPLESERVICE)
-
-DESCRIPTOR.services_by_name['TwistSampleService'] = _TWISTSAMPLESERVICE
+try:
+    # THESE ELEMENTS WILL BE DEPRECATED.
+    # Please use the generated *_pb2_grpc.py files instead.
+    import grpc
+    from grpc.framework.common import cardinality
+    from grpc.framework.interfaces.face import utilities as face_utilities
+    from grpc.beta import implementations as beta_implementations
+    from grpc.beta import interfaces as beta_interfaces
 
 
-_STRATEGYSERVICE = _descriptor.ServiceDescriptor(
-  name='StrategyService',
-  full_name='twist_service.StrategyService',
-  file=DESCRIPTOR,
-  index=1,
-  options=None,
-  serialized_start=435,
-  serialized_end=535,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='startStrategyStream',
-    full_name='twist_service.StrategyService.startStrategyStream',
-    index=0,
-    containing_service=None,
-    input_type=_TWISTDATA,
-    output_type=google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE,
-    options=None,
-  ),
-])
-_sym_db.RegisterServiceDescriptor(_STRATEGYSERVICE)
+    class TwistSampleServiceStub(object):
 
-DESCRIPTOR.services_by_name['StrategyService'] = _STRATEGYSERVICE
+        def __init__(self, channel):
+            """Constructor.
+
+            Args:
+              channel: A grpc.Channel.
+            """
+            self.streamTwistData = channel.stream_stream(
+                '/twist_service.TwistSampleService/streamTwistData',
+                request_serializer=TwistData.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+            )
 
 
-_ENCODERSERVICE = _descriptor.ServiceDescriptor(
-  name='EncoderService',
-  full_name='twist_service.EncoderService',
-  file=DESCRIPTOR,
-  index=2,
-  options=None,
-  serialized_start=537,
-  serialized_end=629,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='startEncoderStream',
-    full_name='twist_service.EncoderService.startEncoderStream',
-    index=0,
-    containing_service=None,
-    input_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
-    output_type=_ENCODERDATA,
-    options=None,
-  ),
-])
-_sym_db.RegisterServiceDescriptor(_ENCODERSERVICE)
+    class TwistSampleServiceServicer(object):
 
-DESCRIPTOR.services_by_name['EncoderService'] = _ENCODERSERVICE
+        def streamTwistData(self, request_iterator, context):
+            """DEPRECATED blockingStubRef and writeTwistData()
+            rpc writeTwistData (TwistData) returns (google.protobuf.Empty);
+            """
+            context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+            context.set_details('Method not implemented!')
+            raise NotImplementedError('Method not implemented!')
 
 
-_HEALTHCHECKSERVICE = _descriptor.ServiceDescriptor(
-  name='HealthCheckService',
-  full_name='twist_service.HealthCheckService',
-  file=DESCRIPTOR,
-  index=3,
-  options=None,
-  serialized_start=631,
-  serialized_end=730,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='healthCheck',
-    full_name='twist_service.HealthCheckService.healthCheck',
-    index=0,
-    containing_service=None,
-    input_type=google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE,
-    output_type=google_dot_protobuf_dot_wrappers__pb2._STRINGVALUE,
-    options=None,
-  ),
-])
-_sym_db.RegisterServiceDescriptor(_HEALTHCHECKSERVICE)
+    def add_TwistSampleServiceServicer_to_server(servicer, server):
+        rpc_method_handlers = {
+            'streamTwistData': grpc.stream_stream_rpc_method_handler(
+                servicer.streamTwistData,
+                request_deserializer=TwistData.FromString,
+                response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            ),
+        }
+        generic_handler = grpc.method_handlers_generic_handler(
+            'twist_service.TwistSampleService', rpc_method_handlers)
+        server.add_generic_rpc_handlers((generic_handler,))
 
-DESCRIPTOR.services_by_name['HealthCheckService'] = _HEALTHCHECKSERVICE
 
+    class StrategyServiceStub(object):
+
+        def __init__(self, channel):
+            """Constructor.
+
+            Args:
+              channel: A grpc.Channel.
+            """
+            self.startStrategyStream = channel.stream_stream(
+                '/twist_service.StrategyService/startStrategyStream',
+                request_serializer=TwistData.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+            )
+
+
+    class StrategyServiceServicer(object):
+
+        def startStrategyStream(self, request_iterator, context):
+            context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+            context.set_details('Method not implemented!')
+            raise NotImplementedError('Method not implemented!')
+
+
+    def add_StrategyServiceServicer_to_server(servicer, server):
+        rpc_method_handlers = {
+            'startStrategyStream': grpc.stream_stream_rpc_method_handler(
+                servicer.startStrategyStream,
+                request_deserializer=TwistData.FromString,
+                response_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+            ),
+        }
+        generic_handler = grpc.method_handlers_generic_handler(
+            'twist_service.StrategyService', rpc_method_handlers)
+        server.add_generic_rpc_handlers((generic_handler,))
+
+
+    class CommandServiceStub(object):
+
+        def __init__(self, channel):
+            """Constructor.
+
+            Args:
+              channel: A grpc.Channel.
+            """
+            self.startCommandStream = channel.stream_stream(
+                '/twist_service.CommandService/startCommandStream',
+                request_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+            )
+
+
+    class CommandServiceServicer(object):
+
+        def startCommandStream(self, request_iterator, context):
+            context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+            context.set_details('Method not implemented!')
+            raise NotImplementedError('Method not implemented!')
+
+
+    def add_CommandServiceServicer_to_server(servicer, server):
+        rpc_method_handlers = {
+            'startCommandStream': grpc.stream_stream_rpc_method_handler(
+                servicer.startCommandStream,
+                request_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+                response_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+            ),
+        }
+        generic_handler = grpc.method_handlers_generic_handler(
+            'twist_service.CommandService', rpc_method_handlers)
+        server.add_generic_rpc_handlers((generic_handler,))
+
+
+    class EncoderServiceStub(object):
+
+        def __init__(self, channel):
+            """Constructor.
+
+            Args:
+              channel: A grpc.Channel.
+            """
+            self.startEncoderStream = channel.unary_stream(
+                '/twist_service.EncoderService/startEncoderStream',
+                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+                response_deserializer=EncoderData.FromString,
+            )
+
+
+    class EncoderServiceServicer(object):
+
+        def startEncoderStream(self, request, context):
+            context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+            context.set_details('Method not implemented!')
+            raise NotImplementedError('Method not implemented!')
+
+
+    def add_EncoderServiceServicer_to_server(servicer, server):
+        rpc_method_handlers = {
+            'startEncoderStream': grpc.unary_stream_rpc_method_handler(
+                servicer.startEncoderStream,
+                request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                response_serializer=EncoderData.SerializeToString,
+            ),
+        }
+        generic_handler = grpc.method_handlers_generic_handler(
+            'twist_service.EncoderService', rpc_method_handlers)
+        server.add_generic_rpc_handlers((generic_handler,))
+
+
+    class HealthCheckServiceStub(object):
+
+        def __init__(self, channel):
+            """Constructor.
+
+            Args:
+              channel: A grpc.Channel.
+            """
+            self.healthCheck = channel.stream_stream(
+                '/twist_service.HealthCheckService/healthCheck',
+                request_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+            )
+
+
+    class HealthCheckServiceServicer(object):
+
+        def healthCheck(self, request_iterator, context):
+            context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+            context.set_details('Method not implemented!')
+            raise NotImplementedError('Method not implemented!')
+
+
+    def add_HealthCheckServiceServicer_to_server(servicer, server):
+        rpc_method_handlers = {
+            'healthCheck': grpc.stream_stream_rpc_method_handler(
+                servicer.healthCheck,
+                request_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+                response_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+            ),
+        }
+        generic_handler = grpc.method_handlers_generic_handler(
+            'twist_service.HealthCheckService', rpc_method_handlers)
+        server.add_generic_rpc_handlers((generic_handler,))
+
+
+    class BetaTwistSampleServiceServicer(object):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This class was generated
+        only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+
+        def streamTwistData(self, request_iterator, context):
+            """DEPRECATED blockingStubRef and writeTwistData()
+            rpc writeTwistData (TwistData) returns (google.protobuf.Empty);
+            """
+            context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+
+
+    class BetaTwistSampleServiceStub(object):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This class was generated
+        only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+
+        def streamTwistData(self, request_iterator, timeout, metadata=None, with_call=False, protocol_options=None):
+            """DEPRECATED blockingStubRef and writeTwistData()
+            rpc writeTwistData (TwistData) returns (google.protobuf.Empty);
+            """
+            raise NotImplementedError()
+
+
+    def beta_create_TwistSampleService_server(servicer, pool=None, pool_size=None, default_timeout=None,
+                                              maximum_timeout=None):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This function was
+        generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+        request_deserializers = {
+            ('twist_service.TwistSampleService', 'streamTwistData'): TwistData.FromString,
+        }
+        response_serializers = {
+            ('twist_service.TwistSampleService',
+             'streamTwistData'): google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+        }
+        method_implementations = {
+            ('twist_service.TwistSampleService', 'streamTwistData'): face_utilities.stream_stream_inline(
+                servicer.streamTwistData),
+        }
+        server_options = beta_implementations.server_options(request_deserializers=request_deserializers,
+                                                             response_serializers=response_serializers,
+                                                             thread_pool=pool, thread_pool_size=pool_size,
+                                                             default_timeout=default_timeout,
+                                                             maximum_timeout=maximum_timeout)
+        return beta_implementations.server(method_implementations, options=server_options)
+
+
+    def beta_create_TwistSampleService_stub(channel, host=None, metadata_transformer=None, pool=None, pool_size=None):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This function was
+        generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+        request_serializers = {
+            ('twist_service.TwistSampleService', 'streamTwistData'): TwistData.SerializeToString,
+        }
+        response_deserializers = {
+            (
+            'twist_service.TwistSampleService', 'streamTwistData'): google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+        }
+        cardinalities = {
+            'streamTwistData': cardinality.Cardinality.STREAM_STREAM,
+        }
+        stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer,
+                                                         request_serializers=request_serializers,
+                                                         response_deserializers=response_deserializers,
+                                                         thread_pool=pool, thread_pool_size=pool_size)
+        return beta_implementations.dynamic_stub(channel, 'twist_service.TwistSampleService', cardinalities,
+                                                 options=stub_options)
+
+
+    class BetaStrategyServiceServicer(object):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This class was generated
+        only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+
+        def startStrategyStream(self, request_iterator, context):
+            context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+
+
+    class BetaStrategyServiceStub(object):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This class was generated
+        only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+
+        def startStrategyStream(self, request_iterator, timeout, metadata=None, with_call=False, protocol_options=None):
+            raise NotImplementedError()
+
+
+    def beta_create_StrategyService_server(servicer, pool=None, pool_size=None, default_timeout=None,
+                                           maximum_timeout=None):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This function was
+        generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+        request_deserializers = {
+            ('twist_service.StrategyService', 'startStrategyStream'): TwistData.FromString,
+        }
+        response_serializers = {
+            ('twist_service.StrategyService',
+             'startStrategyStream'): google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+        }
+        method_implementations = {
+            ('twist_service.StrategyService', 'startStrategyStream'): face_utilities.stream_stream_inline(
+                servicer.startStrategyStream),
+        }
+        server_options = beta_implementations.server_options(request_deserializers=request_deserializers,
+                                                             response_serializers=response_serializers,
+                                                             thread_pool=pool, thread_pool_size=pool_size,
+                                                             default_timeout=default_timeout,
+                                                             maximum_timeout=maximum_timeout)
+        return beta_implementations.server(method_implementations, options=server_options)
+
+
+    def beta_create_StrategyService_stub(channel, host=None, metadata_transformer=None, pool=None, pool_size=None):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This function was
+        generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+        request_serializers = {
+            ('twist_service.StrategyService', 'startStrategyStream'): TwistData.SerializeToString,
+        }
+        response_deserializers = {
+            ('twist_service.StrategyService',
+             'startStrategyStream'): google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+        }
+        cardinalities = {
+            'startStrategyStream': cardinality.Cardinality.STREAM_STREAM,
+        }
+        stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer,
+                                                         request_serializers=request_serializers,
+                                                         response_deserializers=response_deserializers,
+                                                         thread_pool=pool, thread_pool_size=pool_size)
+        return beta_implementations.dynamic_stub(channel, 'twist_service.StrategyService', cardinalities,
+                                                 options=stub_options)
+
+
+    class BetaCommandServiceServicer(object):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This class was generated
+        only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+
+        def startCommandStream(self, request_iterator, context):
+            context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+
+
+    class BetaCommandServiceStub(object):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This class was generated
+        only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+
+        def startCommandStream(self, request_iterator, timeout, metadata=None, with_call=False, protocol_options=None):
+            raise NotImplementedError()
+
+
+    def beta_create_CommandService_server(servicer, pool=None, pool_size=None, default_timeout=None,
+                                          maximum_timeout=None):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This function was
+        generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+        request_deserializers = {
+            ('twist_service.CommandService',
+             'startCommandStream'): google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+        }
+        response_serializers = {
+            ('twist_service.CommandService',
+             'startCommandStream'): google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+        }
+        method_implementations = {
+            ('twist_service.CommandService', 'startCommandStream'): face_utilities.stream_stream_inline(
+                servicer.startCommandStream),
+        }
+        server_options = beta_implementations.server_options(request_deserializers=request_deserializers,
+                                                             response_serializers=response_serializers,
+                                                             thread_pool=pool, thread_pool_size=pool_size,
+                                                             default_timeout=default_timeout,
+                                                             maximum_timeout=maximum_timeout)
+        return beta_implementations.server(method_implementations, options=server_options)
+
+
+    def beta_create_CommandService_stub(channel, host=None, metadata_transformer=None, pool=None, pool_size=None):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This function was
+        generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+        request_serializers = {
+            ('twist_service.CommandService',
+             'startCommandStream'): google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+        }
+        response_deserializers = {
+            ('twist_service.CommandService',
+             'startCommandStream'): google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+        }
+        cardinalities = {
+            'startCommandStream': cardinality.Cardinality.STREAM_STREAM,
+        }
+        stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer,
+                                                         request_serializers=request_serializers,
+                                                         response_deserializers=response_deserializers,
+                                                         thread_pool=pool, thread_pool_size=pool_size)
+        return beta_implementations.dynamic_stub(channel, 'twist_service.CommandService', cardinalities,
+                                                 options=stub_options)
+
+
+    class BetaEncoderServiceServicer(object):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This class was generated
+        only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+
+        def startEncoderStream(self, request, context):
+            context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+
+
+    class BetaEncoderServiceStub(object):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This class was generated
+        only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+
+        def startEncoderStream(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+            raise NotImplementedError()
+
+
+    def beta_create_EncoderService_server(servicer, pool=None, pool_size=None, default_timeout=None,
+                                          maximum_timeout=None):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This function was
+        generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+        request_deserializers = {
+            ('twist_service.EncoderService', 'startEncoderStream'): google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+        }
+        response_serializers = {
+            ('twist_service.EncoderService', 'startEncoderStream'): EncoderData.SerializeToString,
+        }
+        method_implementations = {
+            ('twist_service.EncoderService', 'startEncoderStream'): face_utilities.unary_stream_inline(
+                servicer.startEncoderStream),
+        }
+        server_options = beta_implementations.server_options(request_deserializers=request_deserializers,
+                                                             response_serializers=response_serializers,
+                                                             thread_pool=pool, thread_pool_size=pool_size,
+                                                             default_timeout=default_timeout,
+                                                             maximum_timeout=maximum_timeout)
+        return beta_implementations.server(method_implementations, options=server_options)
+
+
+    def beta_create_EncoderService_stub(channel, host=None, metadata_transformer=None, pool=None, pool_size=None):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This function was
+        generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+        request_serializers = {
+            ('twist_service.EncoderService',
+             'startEncoderStream'): google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+        }
+        response_deserializers = {
+            ('twist_service.EncoderService', 'startEncoderStream'): EncoderData.FromString,
+        }
+        cardinalities = {
+            'startEncoderStream': cardinality.Cardinality.UNARY_STREAM,
+        }
+        stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer,
+                                                         request_serializers=request_serializers,
+                                                         response_deserializers=response_deserializers,
+                                                         thread_pool=pool, thread_pool_size=pool_size)
+        return beta_implementations.dynamic_stub(channel, 'twist_service.EncoderService', cardinalities,
+                                                 options=stub_options)
+
+
+    class BetaHealthCheckServiceServicer(object):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This class was generated
+        only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+
+        def healthCheck(self, request_iterator, context):
+            context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+
+
+    class BetaHealthCheckServiceStub(object):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This class was generated
+        only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+
+        def healthCheck(self, request_iterator, timeout, metadata=None, with_call=False, protocol_options=None):
+            raise NotImplementedError()
+
+
+    def beta_create_HealthCheckService_server(servicer, pool=None, pool_size=None, default_timeout=None,
+                                              maximum_timeout=None):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This function was
+        generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+        request_deserializers = {
+            ('twist_service.HealthCheckService',
+             'healthCheck'): google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+        }
+        response_serializers = {
+            ('twist_service.HealthCheckService',
+             'healthCheck'): google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+        }
+        method_implementations = {
+            ('twist_service.HealthCheckService', 'healthCheck'): face_utilities.stream_stream_inline(
+                servicer.healthCheck),
+        }
+        server_options = beta_implementations.server_options(request_deserializers=request_deserializers,
+                                                             response_serializers=response_serializers,
+                                                             thread_pool=pool, thread_pool_size=pool_size,
+                                                             default_timeout=default_timeout,
+                                                             maximum_timeout=maximum_timeout)
+        return beta_implementations.server(method_implementations, options=server_options)
+
+
+    def beta_create_HealthCheckService_stub(channel, host=None, metadata_transformer=None, pool=None, pool_size=None):
+        """The Beta API is deprecated for 0.15.0 and later.
+
+        It is recommended to use the GA API (classes and functions in this
+        file not marked beta) for all further purposes. This function was
+        generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+        request_serializers = {
+            ('twist_service.HealthCheckService',
+             'healthCheck'): google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+        }
+        response_deserializers = {
+            ('twist_service.HealthCheckService',
+             'healthCheck'): google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+        }
+        cardinalities = {
+            'healthCheck': cardinality.Cardinality.STREAM_STREAM,
+        }
+        stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer,
+                                                         request_serializers=request_serializers,
+                                                         response_deserializers=response_deserializers,
+                                                         thread_pool=pool, thread_pool_size=pool_size)
+        return beta_implementations.dynamic_stub(channel, 'twist_service.HealthCheckService', cardinalities,
+                                                 options=stub_options)
+except ImportError:
+    pass
 # @@protoc_insertion_point(module_scope)
