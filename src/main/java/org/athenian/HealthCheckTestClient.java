@@ -1,5 +1,7 @@
 package org.athenian;
 
+import io.grpc.StatusRuntimeException;
+
 import java.util.concurrent.CountDownLatch;
 
 public class HealthCheckTestClient {
@@ -13,29 +15,63 @@ public class HealthCheckTestClient {
     private void run() {
         HealthCheckClient client = new HealthCheckClient(
                 RioBridgeConstants.hostname,
-                RioBridgeConstants.port,
-                this::onMessage);
+                RioBridgeConstants.port);
 
-        CountDownLatch finishLatch = client.startHealthCheck();
+        CountDownLatch finishLatch = new CountDownLatch(1);
         System.out.println("Client started.");
 
+        String healthCheck, response;
+        boolean isConnected = false;
         while (finishLatch.getCount() > 0) {
-            String healthCheck = messages[message];
-            System.out.printf("Client sent: %s\n", healthCheck);
-            client.sendHealthCheck(healthCheck);
 
-            message = (message + 1) % 3;
+            System.out.println("\nConnecting to server...");
 
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                finishLatch.countDown();
+            while (!isConnected) {
+                try {
+                    if (client.sendHealthCheck(RioBridgeConstants.START_MSG).equals(RioBridgeConstants.START_MSG)) {
+                        System.out.println("Connected to server.");
+                        isConnected = true;
+                        break;  // Switch to connected loop
+                    }
+                } catch (StatusRuntimeException e) {
+                    // Still disconnected
+                    //System.out.println("Still trying");
+                }
+
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    finishLatch.countDown(); // Quit completely
+                    break;
+                }
+            }
+
+            while (isConnected) {
+                healthCheck = messages[message];
+                System.out.printf("\nClient sent: %s\n", healthCheck);
+
+                try {
+                    response = client.sendHealthCheck(healthCheck);
+                } catch (StatusRuntimeException e) {
+                    System.out.printf("\nFailed to send: %s\n", healthCheck);
+                    System.out.println("Disconnected from server, will try to reconnect.");
+                    isConnected = false;
+                    break;  // Switch to disconnected loop
+                }
+                System.out.printf("Client got: %s\n", response);
+
+                message = (message + 1) % 3;
+
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    finishLatch.countDown(); // Quit completely
+                    break;
+                }
             }
         }
-    }
-
-    private void onMessage(String healthCheck) {
-        System.out.printf("Client got: \"%s\"\n", healthCheck);
+        System.out.println("Client ended successfully.");
     }
 }

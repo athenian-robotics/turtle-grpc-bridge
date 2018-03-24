@@ -8,6 +8,7 @@ import java.util.concurrent.CountDownLatch;
 
 public class HealthCheckTestServer {
     private static String[] messages = {"Lorem ipsum", "dolor sit amet", "consectetur adipiscing elit"};
+    private static boolean isConnected = false;
     int message = 0;
 
     public static void main(String[] args) {
@@ -27,8 +28,9 @@ public class HealthCheckTestServer {
         }
 
         System.out.println("Server started.  Waiting for connection...");
-        while (!service.isConnected()) {
+        while (!this.isConnected) {
             try {
+
                 Thread.sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -39,23 +41,21 @@ public class HealthCheckTestServer {
         CountDownLatch finishLatch = new CountDownLatch(1);
         System.out.println("Connection established.");
 
-        while (finishLatch.getCount() > 0) {
-            String healthCheck = messages[message];
-            System.out.printf("\nServer sent: %s\n", healthCheck);
-            service.sendHealthCheck(healthCheck);
-
-            message = (message + 1) % 3;
-
-            try {
-                Thread.sleep(50);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                finishLatch.countDown();
-            }
+        try {
+            finishLatch.await();
+        } catch(InterruptedException e) {
+            System.out.println("Server interrupted");
         }
+
+        System.out.println("Server ended successfully.");
     }
 
-    private void onMessage(String healthCheck) {
-        System.out.printf("Server got: \"%s\"\n", healthCheck);
+    private String onMessage(String healthCheck) {
+        this.isConnected = true;
+
+        System.out.printf("\nServer got: %s\n", healthCheck);
+
+        System.out.printf("Server sent: %s\n", healthCheck);
+        return healthCheck;
     }
 }

@@ -40,5 +40,5 @@ service EncoderService {
 }
 
 service HealthCheckService {
-    rpc healthCheck (stream google.protobuf.StringValue) returns (stream google.protobuf.StringValue);
+    rpc healthCheck (google.protobuf.StringValue) returns (google.protobuf.StringValue);
 }
